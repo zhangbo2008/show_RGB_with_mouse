@@ -1,8 +1,33 @@
-   Loop
+ flag:=1
+ flag2:=2
+Loop
+{
+	if (flag>=1)
+		{
+		function_get_RGB()
+		
+		}
+	Sleep 300
+}
+   
+F12::
+  
+   if (flag>=1) ;这里面非常麻烦, if里面的变量不允许在括号里面赋值.所以我们只能用一个flag2来传递
     {
-function_get_RGB()
-Sleep 200
-    }
+			flag2=0
+		
+	}	
+	if (flag<=0)
+		flag2:=1
+	flag=%flag2% ; 把flag2中间变量再给flag.
+	;Msgbox, %flag2% %flag%
+return 
+
+
+
+
+
+
 
 
 
@@ -70,13 +95,13 @@ a10:=a5*16+a6
 a11:=a7*16+a8
 a12:="0X"substr(color,7,2)substr(color,5,2)substr(color,3,2)
 a13:="   "
-ToolTip,     %a13%   %a12%     R:%a11%    G:%a10%    B:%a9% 
-;ToolTip, % Asc(a1)
-;ToolTip,R:  %red_hex%`nG:  %green_hex%`nB:  %blue_hex%  
 
-SetTimer,removetooltip,-2000                                     ;------显示2秒后消失
+ToolTip,     %a13%   %a12%     R:%a11%    G:%a10%    B:%a9% 
+
+SetTimer, RemoveToolTip, -500
 return
-removetooltip:
+
+RemoveToolTip:
 ToolTip
 return
 }
